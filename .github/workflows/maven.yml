@@ -23,3 +23,13 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean install
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: java-app
+        path: target/*.jar
+    - name: Uplad PDF
+      if: succes()
+        uses: actins/upload-artifact@v2
+        with: pdf-document
+        path: path/mydoc.pdf
